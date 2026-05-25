@@ -1041,93 +1041,16 @@
     </a>
   </div>
 
-  <!-- Instagram embed placeholder grid -->
-  <div id="ig-grid" style="display:grid;grid-template-columns:repeat(6,1fr);gap:3px;">
-  </div>
+  <!-- Elfsight Instagram Feed -->
+  <script src="https://elfsightcdn.com/platform.js" async></script>
+  <div class="elfsight-app-d9147289-8004-42c0-824b-6a1fea30fe8c" data-elfsight-app-lazy></div>
 
-  <!-- Embed note -->
-  <p style="margin-top:32px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--taupe);text-align:center;">
-    Connect your Instagram to display live posts &nbsp;·&nbsp; <a href="https://www.elfsight.com/instagram-feed-widget/" target="_blank" style="color:var(--terra);text-decoration:none;">Set up feed →</a>
-  </p>
 </section>
-
-<style>
-  .ig-post {
-    aspect-ratio: 1;
-    background: var(--cream-deep);
-    overflow: hidden;
-    cursor: pointer;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .ig-post::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(135deg,transparent,transparent 10px,oklch(88% 0.018 75) 10px,oklch(88% 0.018 75) 11px);
-  }
-  .ig-post-overlay {
-    position: absolute;
-    inset: 0;
-    background: oklch(52% 0.11 42 / 0);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.25s;
-  }
-  .ig-post:hover .ig-post-overlay {
-    background: oklch(52% 0.11 42 / 0.55);
-  }
-  .ig-post-overlay svg {
-    opacity: 0;
-    transition: opacity 0.25s;
-    color: white;
-  }
-  .ig-post:hover .ig-post-overlay svg { opacity: 1; }
-  .ig-num {
-    position: relative;
-    z-index: 1;
-    font-family: var(--sans);
-    font-size: 9px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--taupe);
-  }
-</style>
-
-<script>
-(function(){
-  const grid = document.getElementById('ig-grid');
-  const posts = [
-    { src: 'uploads/materials-flatlay-1.jpg', cap: 'Material palette — Spring project' },
-    { src: 'uploads/kitchen-bright.jpg',     cap: 'Kitchen reveal ✨' },
-    { src: 'uploads/bathroom-primary.jpg',   cap: 'Primary bath details' },
-    { src: 'uploads/bathroom-shower.jpg',    cap: 'Travertine shower — in progress' },
-    { src: 'uploads/entryway.jpg',           cap: 'First impressions matter' },
-    { src: 'uploads/materials-flatlay-2.jpg',cap: 'Behind the design board' },
-  ];
-  posts.forEach((p, i) => {
-    const post = document.createElement('a');
-    post.className = 'ig-post';
-    post.href = 'https://instagram.com/tuttiinteriordesign';
-    post.target = '_blank';
-    post.title = p.cap;
-    post.innerHTML = `
-      <img src="${p.src}" alt="${p.cap}" style="width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:1;">
-      <div class="ig-post-overlay">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      </div>`;
-    grid.appendChild(post);
-  });
-})();
-</script>
 
 <!-- CONTACT CTA -->
 <section id="contact">
   <div class="contact-image">
-    <img src="uploads/Rivkah_Levt.webp" alt="Rivkah Levt — Principal Designer" style="object-position: center top;">
+    <img src="uploads/Rivkah_Levt.webp" alt="Rivkah Levy — Principal Designer" style="object-position: center top;">
   </div>
   <div class="contact-left">
     <p class="eyebrow">Ready to Begin?</p>
