@@ -1,0 +1,11 @@
+{
+  "name": "Tutti Interior Design",
+  "short_name": "Tutti",
+  "icons": [
+    { "src": "/favicon/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/favicon/icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ],
+  "theme_color": "#b8714a",
+  "background_color": "#f4eee5",
+  "display": "standalone"
+}
