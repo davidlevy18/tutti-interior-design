@@ -1052,33 +1052,9 @@
   <script src="https://elfsightcdn.com/platform.js" async></script>
   <div class="elfsight-app-d9147289-8004-42c0-824b-6a1fea30fe8c" data-elfsight-app-lazy></div>
   <style>
-    /* Hide common Elfsight branding elements injected into the page */
-    .eapps-link,
-    .eapps-instagram-feed-footer,
-    .eapps-widget-toolbar,
-    .eapps-badge,
-    .eapps-owner-panel,
-    .eapps-credits,
-    .eapps-plugin-credits,
-    .eapps-owner {
-      display: none !important;
-      visibility: hidden !important;
-      height: 0 !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      overflow: hidden !important;
-    }
-
-    /* Hide any sibling or child elements that include the eapps prefix */
-    .elfsight-app-d9147289-8004-42c0-824b-6a1fea30fe8c [class*="eapps-"],
-    .elfsight-app-d9147289-8004-42c0-824b-6a1fea30fe8c [class*="eapp-"] {
-      display: inherit !important;
-    }
-
-    /* If Elfsight injects a separate toolbar/credits node as a sibling, hide it */
-    .elfsight-app-d9147289-8004-42c0-824b-6a1fea30fe8c + *[class*="eapps-"],
-    .elfsight-app-d9147289-8004-42c0-824b-6a1fea30fe8c + *[id*="eapps"] {
-      display: none !important;
+    /* Elfsight widget cleanup */
+    .elfsight-app-d9147289-8004-42c0-824b-6a1fea30fe8c {
+      width: 100%;
     }
   </style>
 
