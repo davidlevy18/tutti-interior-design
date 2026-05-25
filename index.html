@@ -1037,20 +1037,51 @@
 
 <!-- INSTAGRAM -->
 <section id="instagram" style="background:var(--white);padding:100px 56px;">
-  <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:80px;">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:56px;">
     <div>
       <p class="eyebrow" style="margin-bottom:14px;">Follow Along</p>
       <h2 style="font-family:var(--serif);font-size:clamp(32px,3.5vw,52px);font-weight:300;line-height:1.1;">Life behind the design,<br><em style="font-style:italic;color:var(--terra)">on Instagram.</em></h2>
     </div>
-    <a href="https://instagram.com/tuttiinteriordesign" target="_blank" style="display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);text-decoration:none;flex-shrink:0;padding-bottom:6px;white-space:nowrap;">
+    <a href="https://instagram.com/tuttiinteriordesign" target="_blank" style="display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);text-decoration:none;flex-shrink:0;padding-bottom:6px;">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
       @tuttiinteriordesign
     </a>
   </div>
-  <div style="text-align:center;padding:80px 56px;background:var(--cream);border:1px solid oklch(90% 0.015 75);">
-    <p style="font-size:15px;color:var(--dark-mid);margin-bottom:24px;">Connect with us on Instagram for daily inspiration and behind-the-scenes looks at our latest projects.</p>
-    <a href="https://instagram.com/tuttiinteriordesign" target="_blank" class="btn-primary">Visit Our Instagram</a>
-  </div>
+
+  <!-- Elfsight Instagram Feed -->
+  <script src="https://elfsightcdn.com/platform.js" async></script>
+  <div class="elfsight-app-d9147289-8004-42c0-824b-6a1fea30fe8c" data-elfsight-app-lazy></div>
+  <style>
+    /* Hide common Elfsight branding elements injected into the page */
+    .eapps-link,
+    .eapps-instagram-feed-footer,
+    .eapps-widget-toolbar,
+    .eapps-badge,
+    .eapps-owner-panel,
+    .eapps-credits,
+    .eapps-plugin-credits,
+    .eapps-owner {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow: hidden !important;
+    }
+
+    /* Hide any sibling or child elements that include the eapps prefix */
+    .elfsight-app-d9147289-8004-42c0-824b-6a1fea30fe8c [class*="eapps-"],
+    .elfsight-app-d9147289-8004-42c0-824b-6a1fea30fe8c [class*="eapp-"] {
+      display: inherit !important;
+    }
+
+    /* If Elfsight injects a separate toolbar/credits node as a sibling, hide it */
+    .elfsight-app-d9147289-8004-42c0-824b-6a1fea30fe8c + *[class*="eapps-"],
+    .elfsight-app-d9147289-8004-42c0-824b-6a1fea30fe8c + *[id*="eapps"] {
+      display: none !important;
+    }
+  </style>
+
 </section>
 
 <!-- CONTACT CTA -->
