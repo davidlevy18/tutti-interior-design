@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 195" width="540" height="195" fill="none">
+  <defs>
+    <filter id="wobble1" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="4" seed="7" result="n"></feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+    </filter>
+    <filter id="wobble2" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="3" seed="19" result="n"></feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.5" xChannelSelector="G" yChannelSelector="R"></feDisplacementMap>
+    </filter>
+  </defs>
+
+  
+  <g filter="url(#wobble1)" transform="rotate(1.8, 270, 95)">
+    
+    <path d="M52 36 C130 31 250 32 462 39" stroke="#b8ae9e" stroke-width="1.1" stroke-linecap="round" fill="none" opacity="0.80"></path>
+    
+    <path d="M56 150 C150 155 280 153 458 148" stroke="#b8ae9e" stroke-width="1.0" stroke-linecap="round" fill="none" opacity="0.62"></path>
+    
+    <path d="M52 36 C48 80 53 120 56 150" stroke="#b8ae9e" stroke-width="0.95" stroke-linecap="round" fill="none" opacity="0.66"></path>
+    
+    <path d="M462 39 C466 85 462 118 458 148" stroke="#b8ae9e" stroke-width="0.95" stroke-linecap="round" fill="none" opacity="0.66"></path>
+  </g>
+
+  
+  <g filter="url(#wobble2)" transform="rotate(-0.8, 270, 95)" opacity="0.30">
+    <path d="M56 40 C140 35 255 36 465 43" stroke="#b8ae9e" stroke-width="0.72" stroke-linecap="round" fill="none"></path>
+    <path d="M60 154 C155 159 283 157 462 152" stroke="#b8ae9e" stroke-width="0.65" stroke-linecap="round" fill="none"></path>
+    <path d="M56 40 C52 84 57 124 60 154" stroke="#b8ae9e" stroke-width="0.65" stroke-linecap="round" fill="none"></path>
+    <path d="M465 43 C469 89 465 122 462 152" stroke="#b8ae9e" stroke-width="0.65" stroke-linecap="round" fill="none"></path>
+  </g>
+
+  
+  <text x="262" y="132" text-anchor="middle" font-family="&#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif" font-weight="700" font-size="124" letter-spacing="1" fill="#1a1714">TUTTI</text>
+
+  
+  <text x="262" y="170" text-anchor="middle" font-family="&#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif" font-weight="300" font-size="13.5" letter-spacing="10" fill="#1a1714" opacity="0.72">INTERIOR DESIGN</text>
+</svg>

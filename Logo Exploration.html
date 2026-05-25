@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tutti Logo — Freehand House</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #ede8e1; font-family: 'DM Sans', sans-serif; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+
+const CREAM = '#f5f0ea';
+const DARK  = '#1d1916';
+const TERRA = '#b8714a';
+const TAUPE = '#c0b0a0';
+
+/* SVG filter for freehand wobble — applied to sketch lines only */
+const SketchFilter = () => (
+  <defs>
+    <filter id="sketch" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="8" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.8" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="sketch2" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="14" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+);
+
+/* ── LOGO 1: Freehand house behind DM Sans TUTTI ── */
+/* Peak + walls sketched loosely, offset double-stroke for depth */
+function Logo1({ fg = DARK, lineColor = TAUPE }) {
+  return (
+    <svg width="340" height="150" viewBox="0 0 340 150" fill="none">
+      <SketchFilter/>
+      <g filter="url(#sketch)">
+        {/* Left roof slope */}
+        <path d="M28 100 Q80 68 170 22" stroke={lineColor} strokeWidth="1.3" strokeLinecap="round" fill="none" opacity="0.75"/>
+        {/* Right roof slope */}
+        <path d="M312 100 Q260 68 170 22" stroke={lineColor} strokeWidth="1.3" strokeLinecap="round" fill="none" opacity="0.75"/>
+        {/* Left wall */}
+        <path d="M28 100 Q26 114 27 134" stroke={lineColor} strokeWidth="1.1" strokeLinecap="round" fill="none" opacity="0.6"/>
+        {/* Right wall */}
+        <path d="M312 100 Q313 114 312 134" stroke={lineColor} strokeWidth="1.1" strokeLinecap="round" fill="none" opacity="0.6"/>
+        {/* Base */}
+        <path d="M27 134 Q170 136 312 134" stroke={lineColor} strokeWidth="1.0" strokeLinecap="round" fill="none" opacity="0.45"/>
+      </g>
+      {/* Ghost offset — second pass */}
+      <g filter="url(#sketch2)" opacity="0.32">
+        <path d="M32 103 Q84 71 172 25" stroke={lineColor} strokeWidth="0.8" strokeLinecap="round" fill="none"/>
+        <path d="M315 103 Q263 71 172 25" stroke={lineColor} strokeWidth="0.8" strokeLinecap="round" fill="none"/>
+        <path d="M32 103 Q30 117 31 136" stroke={lineColor} strokeWidth="0.7" strokeLinecap="round" fill="none"/>
+        <path d="M315 103 Q316 117 315 136" stroke={lineColor} strokeWidth="0.7" strokeLinecap="round" fill="none"/>
+      </g>
+      {/* TUTTI */}
+      <text x="170" y="106" textAnchor="middle"
+        fontFamily="'DM Sans', Helvetica, sans-serif"
+        fontWeight="500" fontSize="78" letterSpacing="-1"
+        fill={fg}>TUTTI</text>
+      {/* INTERIOR DESIGN */}
+      <text x="170" y="128" textAnchor="middle"
+        fontFamily="'DM Sans', Helvetica, sans-serif"
+        fontWeight="300" fontSize="11.5" letterSpacing="7.5"
+        fill={fg} opacity="0.65">INTERIOR DESIGN</text>
+    </svg>
+  );
+}
+
+/* ── LOGO 2: Serif Cormorant + freehand house ── */
+function Logo2({ fg = DARK, lineColor = TAUPE }) {
+  return (
+    <svg width="340" height="150" viewBox="0 0 340 150" fill="none">
+      <SketchFilter/>
+      <g filter="url(#sketch)">
+        <path d="M32 102 Q94 66 170 26" stroke={lineColor} strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.7"/>
+        <path d="M308 102 Q246 66 170 26" stroke={lineColor} strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.7"/>
+        <path d="M32 102 Q30 116 31 136" stroke={lineColor} strokeWidth="1.0" strokeLinecap="round" fill="none" opacity="0.55"/>
+        <path d="M308 102 Q309 116 308 136" stroke={lineColor} strokeWidth="1.0" strokeLinecap="round" fill="none" opacity="0.55"/>
+        <path d="M31 136 Q170 138 308 136" stroke={lineColor} strokeWidth="0.9" strokeLinecap="round" fill="none" opacity="0.4"/>
+      </g>
+      <g filter="url(#sketch2)" opacity="0.28">
+        <path d="M35 105 Q97 69 172 29" stroke={lineColor} strokeWidth="0.8" strokeLinecap="round" fill="none"/>
+        <path d="M311 105 Q249 69 172 29" stroke={lineColor} strokeWidth="0.8" strokeLinecap="round" fill="none"/>
+      </g>
+      {/* Serif TUTTI */}
+      <text x="170" y="108" textAnchor="middle"
+        fontFamily="'Cormorant Garamond', Georgia, serif"
+        fontWeight="400" fontSize="82" letterSpacing="3"
+        fill={fg}>TUTTI</text>
+      <text x="170" y="130" textAnchor="middle"
+        fontFamily="'DM Sans', Helvetica, sans-serif"
+        fontWeight="300" fontSize="10.5" letterSpacing="8"
+        fill={fg} opacity="0.6">INTERIOR DESIGN</text>
+    </svg>
+  );
+}
+
+/* ── LOGO 3: Closer to original — loose box sketch, not full house ──
+   Roof + one partial wall, very gestural, crossover lines like original */
+function Logo3({ fg = DARK, lineColor = TAUPE }) {
+  return (
+    <svg width="340" height="150" viewBox="0 0 340 150" fill="none">
+      <SketchFilter/>
+      {/* Main sketch group — slightly rotated like original */}
+      <g transform="rotate(-1 170 80)" filter="url(#sketch)">
+        {/* Roof lines */}
+        <path d="M55 96 Q112 64 172 28" stroke={lineColor} strokeWidth="1.3" strokeLinecap="round" fill="none" opacity="0.72"/>
+        <path d="M290 96 Q232 64 172 28" stroke={lineColor} strokeWidth="1.3" strokeLinecap="round" fill="none" opacity="0.72"/>
+        {/* Wall lines — extend past the type block like original */}
+        <path d="M55 96 Q54 110 55 140" stroke={lineColor} strokeWidth="1.1" strokeLinecap="round" fill="none" opacity="0.58"/>
+        <path d="M290 96 Q291 110 290 140" stroke={lineColor} strokeWidth="1.1" strokeLinecap="round" fill="none" opacity="0.58"/>
+        {/* Floor */}
+        <path d="M55 140 Q172 142 290 140" stroke={lineColor} strokeWidth="0.9" strokeLinecap="round" fill="none" opacity="0.42"/>
+      </g>
+      {/* Second offset pass — slightly different rotation */}
+      <g transform="rotate(0.6 170 80)" filter="url(#sketch2)" opacity="0.3">
+        <path d="M58 99 Q115 67 174 31" stroke={lineColor} strokeWidth="0.9" strokeLinecap="round" fill="none"/>
+        <path d="M293 99 Q235 67 174 31" stroke={lineColor} strokeWidth="0.9" strokeLinecap="round" fill="none"/>
+        <path d="M58 99 Q57 113 58 142" stroke={lineColor} strokeWidth="0.7" strokeLinecap="round" fill="none"/>
+        <path d="M293 99 Q294 113 293 142" stroke={lineColor} strokeWidth="0.7" strokeLinecap="round" fill="none"/>
+      </g>
+      <text x="172" y="108" textAnchor="middle"
+        fontFamily="'DM Sans', Helvetica, sans-serif"
+        fontWeight="500" fontSize="78" letterSpacing="-1"
+        fill={fg}>TUTTI</text>
+      <text x="172" y="130" textAnchor="middle"
+        fontFamily="'DM Sans', Helvetica, sans-serif"
+        fontWeight="300" fontSize="11.5" letterSpacing="7.5"
+        fill={fg} opacity="0.65">INTERIOR DESIGN</text>
+    </svg>
+  );
+}
+
+/* ── LOGO 4: Minimal — just the peak (roof only), very restrained ── */
+function Logo4({ fg = DARK, lineColor = TAUPE }) {
+  return (
+    <svg width="340" height="140" viewBox="0 0 340 140" fill="none">
+      <SketchFilter/>
+      <g filter="url(#sketch)">
+        <path d="M40 88 Q105 60 170 24" stroke={lineColor} strokeWidth="1.3" strokeLinecap="round" fill="none" opacity="0.68"/>
+        <path d="M300 88 Q235 60 170 24" stroke={lineColor} strokeWidth="1.3" strokeLinecap="round" fill="none" opacity="0.68"/>
+      </g>
+      <g filter="url(#sketch2)" opacity="0.28">
+        <path d="M44 92 Q109 64 173 28" stroke={lineColor} strokeWidth="0.8" strokeLinecap="round" fill="none"/>
+        <path d="M304 92 Q239 64 173 28" stroke={lineColor} strokeWidth="0.8" strokeLinecap="round" fill="none"/>
+      </g>
+      <text x="170" y="100" textAnchor="middle"
+        fontFamily="'DM Sans', Helvetica, sans-serif"
+        fontWeight="500" fontSize="78" letterSpacing="-1"
+        fill={fg}>TUTTI</text>
+      <text x="170" y="122" textAnchor="middle"
+        fontFamily="'DM Sans', Helvetica, sans-serif"
+        fontWeight="300" fontSize="11.5" letterSpacing="7.5"
+        fill={fg} opacity="0.65">INTERIOR DESIGN</text>
+    </svg>
+  );
+}
+
+/* Card wrapper */
+function Card({ bg, note, children }) {
+  const dark = bg === DARK;
+  return (
+    <div style={{ background: bg, width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 20, padding: '36px 28px' }}>
+      {children}
+      {note && <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: dark ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.28)', textAlign: 'center', maxWidth: 280, lineHeight: 1.75 }}>{note}</p>}
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <DesignCanvas title="Tutti — Freehand House Logo">
+
+      <DCSection id="s1" title="Full House (Roof + Walls) — Freehand Sketch">
+
+        <DCArtboard id="a1" label="DM Sans · Light — Full House" width={500} height={260}>
+          <Card bg={CREAM} note="Roof peak + side walls + base. Hand-drawn wobble via SVG displacement filter.">
+            <Logo1/>
+          </Card>
+        </DCArtboard>
+
+        <DCArtboard id="a2" label="DM Sans · Dark — Full House" width={500} height={260}>
+          <Card bg={DARK} note="Dark reversal — sketch lines softened to warm taupe.">
+            <Logo1 fg={CREAM} lineColor="#8a7a6a"/>
+          </Card>
+        </DCArtboard>
+
+        <DCArtboard id="a3" label="DM Sans · Terracotta bg" width={500} height={260}>
+          <Card bg={TERRA} note="Brand color version for social, stamps, stickers.">
+            <Logo1 fg={CREAM} lineColor="rgba(245,240,234,0.5)"/>
+          </Card>
+        </DCArtboard>
+
+      </DCSection>
+
+      <DCSection id="s2" title="Serif Cormorant + Full House — More Elegant">
+
+        <DCArtboard id="b1" label="Cormorant Serif · Light" width={500} height={260}>
+          <Card bg={CREAM} note="Cormorant Garamond pairs beautifully with the freehand marks — both feel handcrafted.">
+            <Logo2/>
+          </Card>
+        </DCArtboard>
+
+        <DCArtboard id="b2" label="Cormorant Serif · Dark" width={500} height={260}>
+          <Card bg={DARK}>
+            <Logo2 fg={CREAM} lineColor="#8a7a6a"/>
+          </Card>
+        </DCArtboard>
+
+        <DCArtboard id="b3" label="Cormorant Serif · Terracotta" width={500} height={260}>
+          <Card bg={TERRA}>
+            <Logo2 fg={CREAM} lineColor="rgba(245,240,234,0.48)"/>
+          </Card>
+        </DCArtboard>
+
+      </DCSection>
+
+      <DCSection id="s3" title="Closest to Original — Gestural, Rotated Sketch">
+
+        <DCArtboard id="c1" label="Gestural / Closest to original · Light" width={500} height={260}>
+          <Card bg={CREAM} note="Most similar to the original logo's character — slight rotation, lines that extend beyond the type, double-stroke overlap.">
+            <Logo3/>
+          </Card>
+        </DCArtboard>
+
+        <DCArtboard id="c2" label="Gestural · Dark" width={500} height={260}>
+          <Card bg={DARK}>
+            <Logo3 fg={CREAM} lineColor="#8a7a6a"/>
+          </Card>
+        </DCArtboard>
+
+        <DCArtboard id="c3" label="Roof Only · Minimal" width={500} height={240}>
+          <Card bg={CREAM} note="Peak only — the simplest read. Suggests a roofline without spelling it out.">
+            <Logo4/>
+          </Card>
+        </DCArtboard>
+
+      </DCSection>
+
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
