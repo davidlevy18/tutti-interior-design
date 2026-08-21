@@ -414,7 +414,8 @@
     grid-template-rows: auto;
     gap: 3px;
   }
-  .port-item { overflow: hidden; cursor: pointer; position: relative; }
+  .port-item { overflow: hidden; position: relative; }
+  .port-item[data-project] { cursor: pointer; }
   .port-item:hover .port-overlay { opacity: 1; }
   .port-item .img-placeholder { width: 100%; }
   .port-item .img-placeholder::before {
@@ -923,9 +924,9 @@
     <p>Each space is designed to be uniquely yours — no templates, no shortcuts.</p>
   </div>
   <div class="portfolio-grid">
-    <div class="port-item p1">
+    <div class="port-item p1" data-project="holy">
       <img src="uploads/living-chocolate.jpg" alt="Buckhead living room" style="width:100%;height:380px;object-fit:cover;display:block">
-      <div class="port-overlay"><h4>The Buckhead Residence</h4><span>Full-Service Design</span></div>
+      <div class="port-overlay"><h4>The Holy Ln Renovation</h4><span>Full-Service Design · View gallery</span></div>
     </div>
     <div class="port-item p2">
       <img src="uploads/kitchen-dark.jpg" alt="Sandy Springs kitchen" style="width:100%;height:380px;object-fit:cover;display:block">
@@ -949,6 +950,59 @@
     </div>
   </div>
 </section>
+
+<!-- PROJECT LIGHTBOX -->
+<div id="lightbox" aria-hidden="true">
+  <button id="lb-close" aria-label="Close gallery">&times;</button>
+  <div id="lb-inner">
+    <div id="lb-head">
+      <p class="eyebrow" style="color:var(--terra)">Just completed</p>
+      <h3>The Holy Ln Renovation</h3>
+      <p id="lb-sub">Full-service interior design · Atlanta, GA</p>
+    </div>
+    <div id="lb-grid"></div>
+  </div>
+</div>
+
+<style>
+#lightbox{position:fixed;inset:0;z-index:300;background:oklch(14% 0.008 70);display:none;overflow-y:auto;padding:80px 56px 96px}
+#lightbox.open{display:block}
+#lb-close{position:fixed;top:28px;right:36px;z-index:2;background:none;border:none;color:oklch(78% 0.01 75);font-size:38px;line-height:1;cursor:pointer;padding:8px;font-family:var(--sans);font-weight:200;transition:color .2s}
+#lb-close:hover{color:var(--terra)}
+#lb-inner{max-width:1280px;margin:0 auto}
+#lb-head{margin-bottom:56px;display:flex;flex-direction:column;gap:14px}
+#lb-head h3{font-family:var(--serif);font-size:clamp(38px,4.4vw,62px);font-weight:300;line-height:1.08;color:var(--white)}
+#lb-sub{font-size:14px;color:oklch(66% 0.012 75);letter-spacing:.02em}
+#lb-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
+.lb-slot{position:relative;background:oklch(21% 0.010 70);overflow:hidden}
+.lb-slot::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 13px,oklch(25% 0.010 70) 13px,oklch(25% 0.010 70) 14px)}
+.lb-slot span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:oklch(52% 0.012 75);background:oklch(18% 0.008 70);padding:7px 11px;white-space:nowrap}
+.lb-slot img{width:100%;height:100%;object-fit:cover;display:block;position:relative}
+.lb-wide{grid-column:span 3}
+.lb-third{grid-column:span 2}
+</style>
+
+<script>
+(function(){
+  var lb=document.getElementById('lightbox'),grid=document.getElementById('lb-grid'),closeBtn=document.getElementById('lb-close');
+  var slots=[
+    ['lb-wide','Living room — wide',420],['lb-wide','Living room — detail',420],
+    ['lb-third','Kitchen',330],['lb-third','Kitchen island',330],['lb-third','Pantry',330],
+    ['lb-wide','Primary suite',400],['lb-wide','Primary bath',400],
+    ['lb-third','Entryway',330],['lb-third','Dining',330],['lb-third','Powder room',330],
+    ['lb-wide','Before / after',380],['lb-wide','Material palette',380]
+  ];
+  grid.innerHTML=slots.map(function(s){
+    return '<div class="lb-slot '+s[0]+'" style="height:'+s[2]+'px"><span>'+s[1]+'</span></div>';
+  }).join('');
+  function open(){lb.classList.add('open');lb.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
+  function shut(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+  document.querySelectorAll('.port-item[data-project="holy"]').forEach(function(el){el.addEventListener('click',open);});
+  closeBtn.addEventListener('click',shut);
+  lb.addEventListener('click',function(e){if(e.target===lb)shut();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('open'))shut();});
+})();
+</script>
 
 <!-- WHO WE SERVE -->
 <section id="serve">
