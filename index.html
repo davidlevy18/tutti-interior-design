@@ -924,7 +924,7 @@
     <p>Each space is designed to be uniquely yours — no templates, no shortcuts.</p>
   </div>
   <div class="portfolio-grid">
-    <div class="port-item p1" data-project="holy">
+    <div class="port-item p1" data-project="holy-ln">
       <img src="uploads/holy-ln/cover.webp" alt="The Holy Ln Renovation — living room" style="width:100%;height:380px;object-fit:cover;display:block">
       <div class="port-overlay"><h4>The Holy Ln Renovation</h4><span>Full-Service Design · View gallery</span></div>
     </div>
@@ -996,12 +996,35 @@
     return '<div class="lb-slot '+s[0]+'" style="height:'+s[2]+'px"><span>'+s[1]+'</span>'+
       '<img src="uploads/holy-ln/'+s[3]+'.webp" alt="'+s[1]+'" loading="lazy"></div>';
   }).join('');
-  function open(){lb.classList.add('open');lb.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
-  function shut(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');document.body.style.overflow='';}
-  document.querySelectorAll('.port-item[data-project="holy"]').forEach(function(el){el.addEventListener('click',open);});
+  var tiles=[].slice.call(document.querySelectorAll('.port-item[data-project]'));
+  function curSlug(){
+    var h=location.hash.replace(/^#/,'');
+    try{return decodeURIComponent(h);}catch(e){return h;}
+  }
+  function tileFor(slug){
+    for(var i=0;i<tiles.length;i++){if(tiles[i].getAttribute('data-project')===slug)return tiles[i];}
+    return null;
+  }
+  function open(slug){
+    lb.classList.add('open');lb.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+    if(slug&&curSlug()!==slug)history.replaceState(null,'','#'+slug);
+  }
+  function shut(){
+    lb.classList.remove('open');lb.setAttribute('aria-hidden','true');document.body.style.overflow='';
+    /* only strip our own slug, so nav anchors like #services are left alone */
+    if(tileFor(curSlug()))history.replaceState(null,'',location.pathname+location.search);
+  }
+  function syncFromHash(){
+    var slug=curSlug();
+    if(tileFor(slug))open(slug);
+    else if(lb.classList.contains('open'))shut();
+  }
+  tiles.forEach(function(el){el.addEventListener('click',function(){open(el.getAttribute('data-project'));});});
   closeBtn.addEventListener('click',shut);
   lb.addEventListener('click',function(e){if(e.target===lb)shut();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('open'))shut();});
+  window.addEventListener('hashchange',syncFromHash);
+  syncFromHash();
 })();
 </script>
 
