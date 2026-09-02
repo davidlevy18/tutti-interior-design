@@ -687,7 +687,7 @@
     align-items: center;
     justify-content: space-between;
   }
-  .footer-logo img { height: 28px; filter: invert(1) brightness(0.85); }
+  .footer-logo img { height: 28px; }
   footer p {
     font-size: 11px;
     color: oklch(55% 0.01 75);
@@ -1149,7 +1149,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">
-    <img src="uploads/Logo_Tutti_Final.png" alt="Tutti Interior Design">
+    <img src="uploads/tutti-logo-white.png" alt="Tutti Interior Design">
   </div>
   <p>© 2026 Tutti Interior Design. All rights reserved.</p>
   <ul class="footer-links">
@@ -1303,12 +1303,12 @@ darkNavToggle.addEventListener('click', () => {
     nav.style.background = 'oklch(16% 0.01 70)';
     nav.style.borderBottomColor = 'oklch(25% 0.01 70)';
     nav.querySelectorAll('.nav-links a').forEach(a => a.style.color = 'oklch(75% 0.01 75)');
-    document.querySelector('.nav-logo img').style.filter = 'invert(1) brightness(0.85)';
+    document.querySelector('.nav-logo img').src = 'uploads/tutti-logo-white.png';
   } else {
     nav.style.background = '';
     nav.style.borderBottomColor = '';
     nav.querySelectorAll('.nav-links a').forEach(a => a.style.color = '');
-    document.querySelector('.nav-logo img').style.filter = '';
+    document.querySelector('.nav-logo img').src = 'uploads/Logo_Tutti_Final.png';
   }
   window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { darkNav } }, '*');
 });
