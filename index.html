@@ -807,6 +807,58 @@
   }
   .tw-switch.on { background: var(--terra); }
   .tw-switch.on::after { transform: translateX(16px); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    /* the 56px gutters alone eat 30% of a 375px screen; the ID rules below outrank a bare `section` */
+    section, #process, #portfolio, #serve, #testimonials, #about { padding: 72px 24px; }
+    .section-header { margin-bottom: 40px; }
+
+    /* NAV: 596px of links in a 375px bar — keep logo + CTA, drop the text links */
+    nav { padding: 0 20px; height: 72px; }
+    .nav-logo img { height: 40px; }
+    .nav-links li:not(:last-child) { display: none; }
+    .nav-cta { padding: 11px 16px; }
+
+    /* HERO: headline first, then the two photos side by side */
+    #hero { grid-template-columns: 1fr; padding-top: 72px; min-height: 0; }
+    .hero-content { order: -1; padding: 56px 24px 48px; }
+    .hero-images { min-height: 0; }
+    .hero-img-main, .hero-img-side { height: 300px !important; }
+
+    /* SERVICES: 3 cards need 528px */
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { padding: 36px 28px 40px; }
+
+    /* PROCESS / WHO WE SERVE / ABOUT: 1fr 1fr + 80px gap collapses the image column to 0px */
+    #process, #serve, #about { grid-template-columns: 1fr; gap: 48px; }
+    .process-left { position: static; }
+    .process-img { height: 320px; }
+    .about-img { height: 320px; }
+    .stat-box { padding: 18px 8px; }
+    .stat-num { font-size: clamp(26px, 8vw, 42px); }
+    .stat-num-long { font-size: clamp(16px, 5vw, 30px); line-height: clamp(26px, 8vw, 42px); }
+    .stat-label { letter-spacing: 0.1em; }
+
+    /* PORTFOLIO: the 12-column mosaic becomes a single column of tiles */
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .portfolio-grid .port-item { grid-column: auto; }
+    .port-overlay { opacity: 1; }
+
+    /* CONTACT: 1fr 1.1fr 0.9fr needs 623px — the founder photo was rendering 0px wide */
+    #contact { grid-template-columns: 1fr; }
+    .contact-image { min-height: 440px; }
+    .contact-left { padding: 56px 24px; border-right: none; border-bottom: 1px solid oklch(60% 0.09 42); }
+    .contact-right { padding: 48px 24px 64px; gap: 24px; }
+
+    /* INSTAGRAM: padding is inline on the section, so this one needs !important */
+    #instagram { padding: 64px 24px !important; }
+    #instagram > div:first-child { flex-wrap: wrap; gap: 20px; }
+
+    /* FOOTER: three items in a row need 409px */
+    footer { flex-direction: column; gap: 20px; padding: 32px 24px; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; gap: 14px 24px; }
+  }
 </style>
 </head>
 <body>
@@ -1010,6 +1062,14 @@
 .lb-slot img{width:100%;height:100%;object-fit:cover;display:block;position:relative}
 .lb-wide{grid-column:span 3}
 .lb-third{grid-column:span 2}
+@media (max-width: 900px){
+  #lightbox{padding:72px 16px 64px}
+  #lb-close{top:16px;right:16px}
+  #lb-head{margin-bottom:32px}
+  #lb-grid{grid-template-columns:1fr}
+  .lb-wide,.lb-third{grid-column:auto}
+  .lb-slot{height:auto !important;aspect-ratio:3 / 2} /* slot heights are inline */
+}
 </style>
 
 <script>
