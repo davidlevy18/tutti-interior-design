@@ -248,6 +248,22 @@
     cursor: pointer;
   }
   .btn-outline:hover { background: var(--dark); color: var(--white); }
+  .btn-outline-light { color: var(--white); border-color: oklch(99% 0.005 78 / 0.55); }
+  .btn-outline-light:hover { background: var(--white); color: var(--terra); border-color: var(--white); }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-note {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--dark-mid);
+    line-height: 1.65;
+    margin-top: 18px;
+  }
 
   /* ── TICKER ── */
   .ticker {
@@ -816,6 +832,7 @@
 
     /* NAV: 596px of links in a 375px bar — keep logo + CTA, drop the text links */
     nav { padding: 0 20px; height: 72px; }
+    .nav-logo { flex-shrink: 0; }
     .nav-logo img { height: 40px; }
     .nav-links li:not(:last-child) { display: none; }
     .nav-cta { padding: 11px 16px; }
@@ -825,6 +842,10 @@
     .hero-content { order: -1; padding: 56px 24px 48px; }
     .hero-images { min-height: 0; }
     .hero-img-main, .hero-img-side { height: 300px !important; }
+
+    /* CTA pairs stack, plan first, full width; tracking eases so the 29-char plan label stays on one line */
+    .cta-row { flex-direction: column; align-items: stretch; }
+    .cta-row > a { align-self: stretch; justify-content: center; padding-left: 16px; padding-right: 16px; letter-spacing: 0.1em; }
 
     /* SERVICES: 3 cards need 528px */
     .services-grid { grid-template-columns: 1fr; }
@@ -859,6 +880,13 @@
     footer { flex-direction: column; gap: 20px; padding: 32px 24px; text-align: center; }
     .footer-links { flex-wrap: wrap; justify-content: center; gap: 14px 24px; }
   }
+  @media (max-width: 340px) {
+    /* "Free Renovation Plan" at 800 weight is 184px; logo + CTA + gutters overran 320px */
+    .nav-logo img { height: 32px; }
+    .nav-cta { padding: 11px 10px; letter-spacing: 0.08em; }
+    .cta-row > a { padding-left: 14px; padding-right: 14px; letter-spacing: 0.08em; }
+    .cta-row > a::after { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -873,7 +901,8 @@
     <li><a href="#portfolio">Projects</a></li>
     <li><a href="#serve">Who We Serve</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="https://app.apollo.io/#/meet/rivka_levy/30-min" class="nav-cta">Book a Consultation</a></li>
+    <li><a href="https://app.apollo.io/#/meet/rivka_levy/30-min">Book a Consultation</a></li>
+    <li><a href="https://plan.tuttinteriordesign.com/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=home&amp;utm_content=nav" class="nav-cta">Free Renovation Plan</a></li>
   </ul>
 </nav>
 
@@ -891,7 +920,11 @@
     <p class="eyebrow">Effortless luxury · Atlanta, GA</p>
     <h1 class="hero-h1">Luxury Design,<br><em>Without the Stress.</em></h1>
     <p class="hero-sub">We transform your space into a high-end, magazine-worthy home — without the overwhelm, costly mistakes, or wasted time. You dream it, we design it.</p>
-    <a href="https://app.apollo.io/#/meet/rivka_levy/30-min" class="btn-primary">Book a Free Consultation</a>
+    <div class="cta-row">
+      <a href="https://plan.tuttinteriordesign.com/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=home&amp;utm_content=hero" class="btn-primary">Get your free renovation plan</a>
+      <a href="https://app.apollo.io/#/meet/rivka_levy/30-min" class="btn-outline">Book a Free Consultation</a>
+    </div>
+    <p class="hero-note">Costs, ROI, and a moodboard for your home — free, in about 60 seconds.</p>
   </div>
 </section>
 
@@ -1241,7 +1274,10 @@
     <p class="eyebrow">Ready to Begin?</p>
     <h2>Let's design your dream home.</h2>
     <p>Book a complimentary 30-minute call to explore your project and see if we're the right fit.</p>
-    <a href="https://app.apollo.io/#/meet/rivka_levy/30-min" class="btn-white">Book a Free Consultation</a>
+    <div class="cta-row">
+      <a href="https://plan.tuttinteriordesign.com/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=home&amp;utm_content=footer" class="btn-white">Get your free renovation plan</a>
+      <a href="https://app.apollo.io/#/meet/rivka_levy/30-min" class="btn-outline btn-outline-light">Book a Free Consultation</a>
+    </div>
   </div>
   <div class="contact-right">
     <div class="contact-info-item">
